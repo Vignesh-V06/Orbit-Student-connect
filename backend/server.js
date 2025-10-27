@@ -7,7 +7,6 @@ import db from "./models/MessageDB.js";
 
 const app = express();
 
-// ✅ Allow frontend
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -18,7 +17,6 @@ app.use(
 
 app.use(express.json());
 
-// ✅ Create server
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
@@ -33,14 +31,17 @@ const io = new Server(server, {
 io.on("connection", async (socket) => {
   console.log("✅ User connected:", socket.id);
 
-  // 🟢 Send previous messages to new user
-  const previousMessages = await db.find({});
+  // 🟢 Send previous messages sorted by time
+  const previousMessages = await db.find({}).sort({ timestamp: 1 });
   socket.emit("loadMessages", previousMessages);
 
   // 💬 Handle new message
   socket.on("sendMessage", async (msgData) => {
-    const savedMessage = await db.insert(msgData);
-    io.emit("receiveMessage", savedMessage); // broadcast to all
+    // add timestamp if not sent
+    const messageWithTime = { ...msgData, timestamp: Date.now() };
+
+    const savedMessage = await db.insert(messageWithTime);
+    io.emit("receiveMessage", savedMessage); // broadcast to all clients
   });
 
   socket.on("disconnect", () => {
@@ -48,7 +49,6 @@ io.on("connection", async (socket) => {
   });
 });
 
-// ✅ Default route for testing
 app.get("/", (req, res) => {
   res.send("Orbit Lite backend running with NeDB 🚀");
 });
