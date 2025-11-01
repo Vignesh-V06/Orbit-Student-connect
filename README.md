@@ -231,8 +231,8 @@ orbit/
 
 ☁️ Auto-scale using AWS Elastic Beanstalk or ECS
 
-👤 Author
-Vignesh V.
+👤 Author <br>
+Vignesh V <br>
 📧 [vignesh.v06.dev@gmail.com
-].
+]
 
