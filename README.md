@@ -232,7 +232,7 @@ orbit/
 ☁️ Auto-scale using AWS Elastic Beanstalk or ECS
 
 👤 Author
-Vignesh V
+Vignesh V.
 📧 [vignesh.v06.dev@gmail.com
-]
+].
 
