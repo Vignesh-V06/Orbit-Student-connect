@@ -17,9 +17,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: backend/package-lock.json
+
+      - name: Upgrade npm to match local development
+        run: npm install -g npm@latest
 
       - name: Install dependencies
         run: |
@@ -44,9 +47,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
           cache-dependency-path: orbit-lite-frontend/package-lock.json
+
+      - name: Upgrade npm to match local development
+        run: npm install -g npm@latest
 
       - name: Install dependencies
         run: |
