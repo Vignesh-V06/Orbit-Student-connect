@@ -1,6 +1,6 @@
 # 🌐 Orbit - Student Collaboration Platform
 
-> A cloud-hosted MERN stack application designed for college students to connect, collaborate, and communicate through discussion hubs, workspaces, and informal chatrooms — deployed on AWS EC2 with CloudWatch monitoring.
+> A cloud-hosted MERN stack application designed for college students to connect, collaborate, and communicate through discussion hubs, workspaces, and informal chatrooms — deployed on AWS EC2 with CloudWatch monitoring...
 
 ---
 
